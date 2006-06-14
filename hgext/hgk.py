@@ -1,3 +1,7 @@
+
+copyrev: 8c183bcd38f8f74fdd2275b1459a21c726ff767b
+copy: contrib/hgk.py
+
 # Minimal support for git commands on an hg repository
 #
 # Copyright 2005 Chris Mason <mason@suse.com>
