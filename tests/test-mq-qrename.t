@@ -1,6 +1,6 @@
 
 copy: tests/test-mq-qrename
-copyrev: f4e4fdd87cbe987f6a98133b9cfd30892f32cbec
+copyrev: d4b640d8bbdc5eac7542926129e9633120f3d024
 
 
   $ echo "[extensions]" >> $HGRCPATH
@@ -63,4 +63,25 @@ Test patch being renamed before committed:
 
   $ cd ..
 
+Test overlapping renames (issue2388)
 
+  $ hg init c
+  $ cd c
+  $ hg qinit -c
+  $ echo a > a
+  $ hg add
+  adding a
+  $ hg qnew patcha
+  $ echo b > b
+  $ hg add
+  adding b
+  $ hg qnew patchb
+  $ hg ci --mq -m c1
+  $ hg qrename patchb patchc
+  $ hg qrename patcha patchb
+  $ hg st --mq
+  M patchb
+  M series
+  A patchc
+  R patcha
+  $ cd ..
