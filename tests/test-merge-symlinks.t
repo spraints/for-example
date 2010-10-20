@@ -1,7 +1,3 @@
-
-copy: tests/test-merge-symlinks
-copyrev: 06e54253df33d0f4b769a36bfb0660974aec5b89
-
 
   $ cat > echo.py <<EOF
   > #!/usr/bin/env python
@@ -41,7 +37,7 @@ a file, once as a link. Bundle was generated with:
 Merge them and display *_ISLINK vars
 merge heads
 
-  $ HGMERGE="python ../echo.py" hg merge
+  $ hg merge --tool="python ../echo.py"
   HG_FILE l
   HG_MY_ISLINK 1
   HG_OTHER_ISLINK 0
