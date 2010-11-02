@@ -1,7 +1,3 @@
-
-copy: tests/test-clone-r
-copyrev: 21f47ec98d937340d20cdf59a292a0fddcbb3589
-
   $ hg init test
   $ cd test
 
@@ -41,12 +37,12 @@ copyrev: 21f47ec98d937340d20cdf59a292a0fddcbb3589
   $ hg mv afile anotherfile
   $ hg commit -m "0.3m"
 
-  $ hg debugindex .hg/store/data/afile.i
-     rev    offset  length   base linkrev nodeid       p1           p2
-       0         0       3      0       0 362fef284ce2 000000000000 000000000000
-       1         3       5      1       1 125144f7e028 362fef284ce2 000000000000
-       2         8       7      2       2 4c982badb186 125144f7e028 000000000000
-       3        15       9      3       3 19b1fc555737 4c982badb186 000000000000
+  $ hg debugindex -f 1 .hg/store/data/afile.i
+     rev flag   offset   length     size   base   link     p1     p2       nodeid
+       0 0000        0        3        2      0      0     -1     -1 362fef284ce2
+       1 0000        3        5        4      1      1      0     -1 125144f7e028
+       2 0000        8        7        6      2      2      1     -1 4c982badb186
+       3 0000       15        9        8      3      3      2     -1 19b1fc555737
 
   $ hg debugindex .hg/store/data/adifferentfile.i
      rev    offset  length   base linkrev nodeid       p1           p2
@@ -89,7 +85,6 @@ copyrev: 21f47ec98d937340d20cdf59a292a0fddcbb3589
   > done
   
   ---- hg clone -r 0 test test-0
-  requesting all changes
   adding changesets
   adding manifests
   adding file changes
@@ -103,7 +98,6 @@ copyrev: 21f47ec98d937340d20cdf59a292a0fddcbb3589
   1 files, 1 changesets, 1 total revisions
   
   ---- hg clone -r 1 test test-1
-  requesting all changes
   adding changesets
   adding manifests
   adding file changes
@@ -117,7 +111,6 @@ copyrev: 21f47ec98d937340d20cdf59a292a0fddcbb3589
   1 files, 2 changesets, 2 total revisions
   
   ---- hg clone -r 2 test test-2
-  requesting all changes
   adding changesets
   adding manifests
   adding file changes
@@ -131,7 +124,6 @@ copyrev: 21f47ec98d937340d20cdf59a292a0fddcbb3589
   1 files, 3 changesets, 3 total revisions
   
   ---- hg clone -r 3 test test-3
-  requesting all changes
   adding changesets
   adding manifests
   adding file changes
@@ -145,7 +137,6 @@ copyrev: 21f47ec98d937340d20cdf59a292a0fddcbb3589
   1 files, 4 changesets, 4 total revisions
   
   ---- hg clone -r 4 test test-4
-  requesting all changes
   adding changesets
   adding manifests
   adding file changes
@@ -159,7 +150,6 @@ copyrev: 21f47ec98d937340d20cdf59a292a0fddcbb3589
   1 files, 2 changesets, 2 total revisions
   
   ---- hg clone -r 5 test test-5
-  requesting all changes
   adding changesets
   adding manifests
   adding file changes
@@ -173,7 +163,6 @@ copyrev: 21f47ec98d937340d20cdf59a292a0fddcbb3589
   1 files, 3 changesets, 3 total revisions
   
   ---- hg clone -r 6 test test-6
-  requesting all changes
   adding changesets
   adding manifests
   adding file changes
@@ -187,7 +176,6 @@ copyrev: 21f47ec98d937340d20cdf59a292a0fddcbb3589
   2 files, 4 changesets, 5 total revisions
   
   ---- hg clone -r 7 test test-7
-  requesting all changes
   adding changesets
   adding manifests
   adding file changes
@@ -201,7 +189,6 @@ copyrev: 21f47ec98d937340d20cdf59a292a0fddcbb3589
   3 files, 5 changesets, 6 total revisions
   
   ---- hg clone -r 8 test test-8
-  requesting all changes
   adding changesets
   adding manifests
   adding file changes
