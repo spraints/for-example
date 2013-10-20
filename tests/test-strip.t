@@ -1,5 +1,9 @@
+
+copy: tests/test-mq-strip.t
+copyrev: 11155a55041be75b072124f255c2be5f14217795
+
   $ echo "[extensions]" >> $HGRCPATH
-  $ echo "mq=" >> $HGRCPATH
+  $ echo "strip=" >> $HGRCPATH
   $ echo "graphlog=" >> $HGRCPATH
 
   $ restore() {
@@ -351,6 +355,7 @@ remove branchy history for qimport tests
 
 strip of applied mq should cleanup status file
 
+  $ echo "mq=" >> $HGRCPATH
   $ hg up -C 3
   1 files updated, 0 files merged, 0 files removed, 0 files unresolved
   $ echo fooagain >> bar
