@@ -1,7 +1,3 @@
-
-copy: tests/test-mq-strip.t
-copyrev: 11155a55041be75b072124f255c2be5f14217795
-
   $ echo "[extensions]" >> $HGRCPATH
   $ echo "strip=" >> $HGRCPATH
   $ echo "graphlog=" >> $HGRCPATH
@@ -390,7 +386,7 @@ applied patches after stripping ancestor of queue
 
   $ hg qapplied
 
-Verify strip protects against stripping wc parent when there are uncommited mods
+Verify strip protects against stripping wc parent when there are uncommitted mods
 
   $ echo b > b
   $ hg add b
